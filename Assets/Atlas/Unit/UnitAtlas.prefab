@@ -1,0 +1,1060 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000010244474298}
+  m_IsPrefabParent: 1
+--- !u!1 &1000010244474298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013822448558}
+  - 114: {fileID: 114000010966059000}
+  m_Layer: 0
+  m_Name: UnitAtlas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000013822448558
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010244474298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000010966059000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010244474298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 43bdd8ca0b31cbb44b9126192bbc965f, type: 2}
+  mSprites:
+  - name: Archer
+    x: 579
+    y: 1347
+    width: 265
+    height: 180
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ArcherArmy
+    x: 1696
+    y: 1364
+    width: 267
+    height: 163
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ArcherSquad
+    x: 579
+    y: 893
+    width: 184
+    height: 131
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Barbarian
+    x: 579
+    y: 123
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: BarbarianArmy
+    x: 840
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: BarbarianLord
+    x: 992
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: BarbarianLordSquad
+    x: 1144
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: BarbarianSquad
+    x: 1296
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Bomber
+    x: 0
+    y: 117
+    width: 278
+    height: 212
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: BomberArmy
+    x: 327
+    y: 837
+    width: 231
+    height: 158
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: BomberSquad
+    x: 327
+    y: 232
+    width: 221
+    height: 140
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Bowler
+    x: 1680
+    y: 1838
+    width: 254
+    height: 210
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: BowlerArmy
+    x: 0
+    y: 1234
+    width: 302
+    height: 240
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: BowlerSquad
+    x: 0
+    y: 997
+    width: 307
+    height: 236
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: BroodLord
+    x: 0
+    y: 765
+    width: 311
+    height: 231
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: BroodLordSquad
+    x: 579
+    y: 1164
+    width: 260
+    height: 182
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Colossus
+    x: 1448
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ColossusArmy
+    x: 579
+    y: 431
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ColossusSquad
+    x: 1752
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: CommandCenter
+    x: 840
+    y: 577
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: CommandCenterArmy
+    x: 840
+    y: 423
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: CommandCenterSquad
+    x: 840
+    y: 269
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Commando
+    x: 992
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: CommandoArmy
+    x: 992
+    y: 731
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: CommandoSquad
+    x: 992
+    y: 577
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ElectricWizard
+    x: 1064
+    y: 1825
+    width: 344
+    height: 223
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ElectricWizardArmy
+    x: 1409
+    y: 1837
+    width: 270
+    height: 211
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ElectricWizardSquad
+    x: 327
+    y: 91
+    width: 194
+    height: 140
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Giant
+    x: 327
+    y: 1528
+    width: 336
+    height: 276
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: GiantSkeleton
+    x: 1296
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GiantSkeletonSquad
+    x: 1448
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GiantSquad
+    x: 0
+    y: 1721
+    width: 326
+    height: 327
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Goblin
+    x: 1600
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GoblinArmy
+    x: 1752
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GoblinLord
+    x: 1144
+    y: 731
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GoblinLordSquad
+    x: 579
+    y: 739
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GoblinSquad
+    x: 579
+    y: 585
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Guardian
+    x: 1600
+    y: 1193
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: GuardianSquad
+    x: 579
+    y: 277
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: InfernoDragon
+    x: 1144
+    y: 1366
+    width: 277
+    height: 161
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: InfernoDragonArmy
+    x: 327
+    y: 996
+    width: 223
+    height: 164
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: InfernoDragonSquad
+    x: 327
+    y: 520
+    width: 229
+    height: 151
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Knight
+    x: 1422
+    y: 1364
+    width: 273
+    height: 163
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KnightArmy
+    x: 0
+    y: 330
+    width: 288
+    height: 213
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KnightSquad
+    x: 327
+    y: 373
+    width: 214
+    height: 146
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Musketeer
+    x: 1007
+    y: 1545
+    width: 327
+    height: 259
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: MusketeerArmy
+    x: 1612
+    y: 1604
+    width: 255
+    height: 200
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: MusketeerSquad
+    x: 327
+    y: 672
+    width: 219
+    height: 164
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: New Font
+    x: 1868
+    y: 1545
+    width: 127
+    height: 127
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 1
+    paddingBottom: 0
+  - name: NotPrepare
+    x: 840
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Paladins
+    x: 840
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: PaladinsSquad
+    x: 840
+    y: 731
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Prince
+    x: 0
+    y: 1475
+    width: 306
+    height: 245
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: PrinceArmy
+    x: 664
+    y: 1540
+    width: 342
+    height: 264
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: PrinceSquad
+    x: 1335
+    y: 1615
+    width: 276
+    height: 189
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Probe
+    x: 840
+    y: 115
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ProbeArmy
+    x: 992
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ProbeSquad
+    x: 1144
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: RoyalGiant
+    x: 1296
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: RoyalGiantSquad
+    x: 1448
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ScienceVessle
+    x: 1600
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: ScienceVessleSquad
+    x: 1752
+    y: 1039
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Skeleton
+    x: 579
+    y: 1025
+    width: 195
+    height: 138
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: SkeletonArmy
+    x: 327
+    y: 1805
+    width: 389
+    height: 243
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: SkeletonSquad
+    x: 1868
+    y: 1673
+    width: 178
+    height: 131
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: SpearGoblin
+    x: 992
+    y: 423
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: SpearGoblinArmy
+    x: 992
+    y: 269
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: SpearGoblinSquad
+    x: 992
+    y: 115
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Tester
+    x: 1144
+    y: 885
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: Valkyrie
+    x: 327
+    y: 1333
+    width: 251
+    height: 194
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ValkyrieArmy
+    x: 0
+    y: 544
+    width: 307
+    height: 220
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ValkyrieSquad
+    x: 327
+    y: 1161
+    width: 223
+    height: 171
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Witch
+    x: 845
+    y: 1372
+    width: 298
+    height: 155
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: WitchSquad
+    x: 717
+    y: 1817
+    width: 346
+    height: 231
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Xbow
+    x: 1144
+    y: 577
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: XbowArmy
+    x: 1144
+    y: 423
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  - name: XbowSquad
+    x: 1144
+    y: 269
+    width: 151
+    height: 153
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 25
+    paddingRight: 24
+    paddingTop: 18
+    paddingBottom: 25
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
+  mCoordinates: 0
+  sprites: []

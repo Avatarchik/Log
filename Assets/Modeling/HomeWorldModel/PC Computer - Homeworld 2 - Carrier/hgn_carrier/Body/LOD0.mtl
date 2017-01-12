@@ -1,0 +1,36 @@
+﻿newmtl Hgn_C_Innate_Resource_TEX
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_C_Innate_ResourceEXPORT[1].png
+
+newmtl Hgn_Carrier_Main_TEX
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_Carrier_EXPORT[2].png
+
+newmtl Hgn_Carrier_Engine_TEX
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_Carrier_Engine_EXPORT[4].png
+
+newmtl Hgn_Carrier_Badge
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_Carrier_Badge_EXPORT[1].png
+

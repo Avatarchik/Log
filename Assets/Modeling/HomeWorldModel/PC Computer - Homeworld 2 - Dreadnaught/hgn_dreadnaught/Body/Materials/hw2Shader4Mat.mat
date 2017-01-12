@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: hw2Shader4Mat
+  m_Shader: {fileID: 4800000, guid: 1c7d99c48444644449d53d122ff51864, type: 3}
+  m_ShaderKeywords: AMBIENT_OFF BASE_BRDF CUSTOMLIGHTMAP_OFF CUSTOMSHADOW_OFF LDIR_OFF
+    ORTHO_OFF OUTLINE_BASIC maskTex_OFF
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BRDF
+      second:
+        m_Texture: {fileID: 2800000, guid: d18198fa5d78e2546aa4d9efa7da5c95, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Detail
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _LightmapTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: c3eb593a055b7fa4b9d483e05ec6f422, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MasksTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _OutlineTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Ramp
+      second:
+        m_Texture: {fileID: 2800000, guid: 4a056241e2722dc46a7262a8e7073fd9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Texture
+      second:
+        m_Texture: {fileID: 2800000, guid: c3eb593a055b7fa4b9d483e05ec6f422, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ToonShade
+      second:
+        m_Texture: {fileID: 8900000, guid: b995d4bd9d11078d11005b9844295342, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _XrayTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _BRDFBrightness
+      second: 0.48844886
+    - first:
+        name: _CoreStrength
+      second: 2.94
+    - first:
+        name: _CutOut
+      second: 0
+    - first:
+        name: _CutOutLightCore
+      second: 0
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Emission
+      second: 1
+    - first:
+        name: _FPOW
+      second: 4.37
+    - first:
+        name: _FlashAmount
+      second: 0.351
+    - first:
+        name: _InvFade
+      second: 2
+    - first:
+        name: _MainTexOpacity
+      second: 1
+    - first:
+        name: _Opacity
+      second: -0.77
+    - first:
+        name: _Outline
+      second: 0.003
+    - first:
+        name: _OutlineIntensity
+      second: 1
+    - first:
+        name: _OutlineX
+      second: 0.003
+    - first:
+        name: _OutlineY
+      second: 0.003
+    - first:
+        name: _R0
+      second: 0.6
+    - first:
+        name: _RimFresnel
+      second: 1
+    - first:
+        name: _RimIntensity
+      second: 10
+    - first:
+        name: _TintStrength
+      second: 4.25
+    - first:
+        name: _Transparency
+      second: 1
+    - first:
+        name: _TransparencyFresnel
+      second: 0
+    - first:
+        name: _XrayIntensity
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _CoreColor
+      second: {r: 1, g: 1, b: 1, a: 0.5}
+    - first:
+        name: _FlashColor
+      second: {r: 1, g: 1, b: 1, a: 0}
+    - first:
+        name: _OutlineColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _RimColor
+      second: {r: 1, g: 0.9852941, b: 0.9852941, a: 0.98661566}
+    - first:
+        name: _TintColor
+      second: {r: 1, g: 1, b: 1, a: 0.5}
+    - first:
+        name: _XrayColor
+      second: {r: 1, g: 1, b: 1, a: 1}

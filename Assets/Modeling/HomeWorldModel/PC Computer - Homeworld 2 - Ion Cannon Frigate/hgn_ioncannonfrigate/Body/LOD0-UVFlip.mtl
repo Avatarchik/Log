@@ -1,0 +1,36 @@
+﻿newmtl FrontUV
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd FrontUV_EXPORT[1].png
+
+newmtl LeftoverUV
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd LeftoverUV_EXPORT[1].png
+
+newmtl Engine
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_AssaultFrigate_Engine_EXPORT[5].png
+
+newmtl Badge0_MAT
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd FrontUV_Badge_EXPORT[1].png
+

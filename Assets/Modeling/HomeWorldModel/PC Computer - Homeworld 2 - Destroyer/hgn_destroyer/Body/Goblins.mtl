@@ -1,0 +1,27 @@
+﻿newmtl Hgn_Leftover
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_Destroyer_Leftover_EXPORT[1].png
+
+newmtl Hgn_Front
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_Destroyer_Front_EXPORT[1].png
+
+newmtl Hgn_Burner
+illum 2
+Kd 204 204 204
+Ka 51 51 51
+Ks 0 0 0
+Ke 0 0 0
+Ns 0
+map_Kd Hgn_Destroyer_Burner_EXPORT[4].png
+
