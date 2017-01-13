@@ -18420,6 +18420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9bc49f6ef7f634faa0efa8ebdbb7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kIsCinemaView: 1
 --- !u!45 &245644496
 Skybox:
   m_ObjectHideFlags: 0
