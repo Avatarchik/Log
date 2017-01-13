@@ -10,6 +10,8 @@ public class LobbyCamera : MonoBehaviour
     BezierCurve[] mViewCurve = new BezierCurve[4];
     int mCameraCurveIndex = 0;
 
+    public bool kIsCinemaView = true;
+
     void Awake()
     {
         for (int i = 0; i < 4; i++)
@@ -21,8 +23,11 @@ public class LobbyCamera : MonoBehaviour
 
     void OnEnable()
     {
-        mCameraCurveIndex = Random.Range(0, 4);
-        StartCoroutine(CameraView(30.0f));
+        if (kIsCinemaView == true)
+        {
+            mCameraCurveIndex = Random.Range(0, 4);
+            StartCoroutine(CameraView(30.0f));
+        }
     }    
 
     IEnumerator CameraView(float _duration)

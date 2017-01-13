@@ -195,6 +195,7 @@ public class LobbyManager : SingletonG<LobbyManager>{
                     if (kIsChangeWorld == true)
                     { 
                         kLobbyBoard.OnPrepare();
+                        kLobbyCamera.kIsCinemaView = true;
                         kLobbyCamera.gameObject.SetActive(true);
                         kLobbySpaceFog.gameObject.SetActive(true);
                     }
@@ -227,6 +228,7 @@ public class LobbyManager : SingletonG<LobbyManager>{
                 break;
             case MenuSelect.WorldMap:
                 {
+                    kLobbyCamera.kIsCinemaView = false;
                     kLobbyCamera.gameObject.SetActive(true);
                     WorldMapUIRoot.Instance.gameObject.SetActive(true);
                     SoundManager.Instance.BGMVolume(0.3f);
