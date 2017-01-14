@@ -38,8 +38,7 @@ public class CommonUIRoot : SequenceController
     }
 
     // Use this for initialization
-    public override void OnStart () {
-        EasyTouch.instance.nGUICameras.Add(mCamera);
+    public override void OnStart () {        
     }
 
     // Update is called once per frame
