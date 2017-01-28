@@ -59,6 +59,7 @@ public class UIMainMenu : UIBase {
 
     public void OnClickBattle()
     {
+        GameData.Lobby.kSelectMode = StageEnum.Mode.Battle;
         SceneLoadManager.Instance.SetLoadScene(CommonEnum.SceneState.Stage);
     }
 

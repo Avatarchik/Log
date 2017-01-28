@@ -7,5 +7,6 @@ public static class StageDef
     public const int LAYER_ENEMY = 9;
     public const int LAYER_UNIT = 10;
 
-    public const int MAX_SHIP_GROUP_COUNT = 15;
+    //같은 효과음 중첩 방지 시간
+    public const float SOUND_EFFECT_MIN_OVERTIME = 0.15f;
 }

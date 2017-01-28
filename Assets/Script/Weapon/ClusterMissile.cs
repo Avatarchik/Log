@@ -29,7 +29,7 @@ public class ClusterMissile : Projectile {
         mTrail.Clear();
         mModel.gameObject.SetActive(true);
 
-        if (mTargetShip.kIsPlayerGroup == true)
+        if (mTargetShip.kIsPlayer == true)
         {
             mTargetShipList = StagePlayManager.Instance.kPlayerShipList;
             mMaskLayer = 1 << StageDef.LAYER_PLAYER;

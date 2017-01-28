@@ -149,4 +149,11 @@ namespace CommonEnum
         Legendary,      //전설
         Artifact        //유물
     }
+
+    public enum ResourceType
+    {
+        Gold,
+        Material,
+        Cristal
+    }
 }

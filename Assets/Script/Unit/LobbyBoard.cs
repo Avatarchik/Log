@@ -18,7 +18,7 @@ public class LobbyBoard : ShipBoard {
     {
         gameObject.SetActive(true);
         
-        for (int i = 0; i < StageDef.MAX_SHIP_GROUP_COUNT; i++)
+        for (int i = 0; i < CommonDef.MAX_SHIP_GROUP_COUNT; i++)
         {
             int shipID = GameData.Local.GetSlotData(i);
             if (shipID == 0)
@@ -37,16 +37,16 @@ public class LobbyBoard : ShipBoard {
     {
         Model model = (Model)_shipID;
 
-        string resName = ShipSupport.TypeToString(_shipID);
+        string resName = UnitSupport.TypeToString(_shipID);
         Transform slot = transform.Find("Slot" + _slotIndex.ToString());
 
-        if (ShipSupport.IsSingleSpawn(model) == true)
+        if (UnitSupport.IsSingleSpawn(model) == true)
         {
             Ship ship = ObjectPoolManager.Instance.GetGameObejct(resName).GetComponent<Ship>();
             ship.kModel = model;
             
             ship.transform.parent = slot;
-            ship.kIsPlayerGroup = kIsPlayerGroup;
+            ship.kIsPlayer = kIsPlayerGroup;
             ship.transform.forward = slot.forward;
 
             Vector3 pos = slot.position;
@@ -65,12 +65,12 @@ public class LobbyBoard : ShipBoard {
             pos.y += Random.Range(-20.0f, 20.0f);
             shipGroup.transform.position = pos;
 
-            string refResName = ShipSupport.RefTypeToString(_shipID);
+            string childUnitResName = UnitSupport.ChildTypeToString(_shipID);
 
             for (int i = 0; i < shipGroup.transform.childCount; i++)
             {
-                Ship childShip = ObjectPoolManager.Instance.GetGameObejct(refResName).GetComponent<Ship>();
-                childShip.kIsPlayerGroup = kIsPlayerGroup;
+                Ship childShip = ObjectPoolManager.Instance.GetGameObejct(childUnitResName).GetComponent<Ship>();
+                childShip.kIsPlayer = kIsPlayerGroup;
                 childShip.transform.forward = transform.forward;
                 childShip.transform.position = shipGroup.transform.GetChild(i).position;
                 shipGroup.transform.GetChild(i).gameObject.SetActive(false);

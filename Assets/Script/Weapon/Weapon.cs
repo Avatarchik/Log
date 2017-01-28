@@ -186,28 +186,28 @@ public class Weapon : MonoBehaviour {
                 case Projectile.Type.Cannon:
                     {
                         projectile = ObjectPoolManager.Instance.GetGameObejct(StrDef.PROJECTILE_CANNON).GetComponent<Projectile>();
-                        if( mOwnerShip.kIsPlayerGroup == true)
+                        if( mOwnerShip.kIsPlayer == true)
                             SoundManager.Instance.PlayEffect(2000001);
                     }
                     break;
                 case Projectile.Type.Missile:
                     {
                         projectile = ObjectPoolManager.Instance.GetGameObejct(StrDef.PROJECTILE_MISSILE).GetComponent<Projectile>();
-                        if (mOwnerShip.kIsPlayerGroup == true)
+                        if (mOwnerShip.kIsPlayer == true)
                             SoundManager.Instance.PlayEffect(2000002);
                     }
                     break;
                 case Projectile.Type.Laser:
                     {
                         projectile = ObjectPoolManager.Instance.GetGameObejct(StrDef.PROJECTILE_LASER).GetComponent<Projectile>();
-                        if (mOwnerShip.kIsPlayerGroup == true)
+                        if (mOwnerShip.kIsPlayer == true)
                             SoundManager.Instance.PlayEffect(2000003);
                     }
                     break;
                 case Projectile.Type.ElectricityLaser:
                     {
                         projectile = ObjectPoolManager.Instance.GetGameObejct(StrDef.PROJECTILE_ELECTRICITYLASER).GetComponent<Projectile>();
-                        if (mOwnerShip.kIsPlayerGroup == true)
+                        if (mOwnerShip.kIsPlayer == true)
                             SoundManager.Instance.PlayEffect(2000004);
                     }
                     break;
@@ -223,7 +223,7 @@ public class Weapon : MonoBehaviour {
                 case Projectile.Type.ClusterMissile:
                     {
                         projectile = ObjectPoolManager.Instance.GetGameObejct(StrDef.PROJECTILE_CLUSTERMISSILE).GetComponent<Projectile>();
-                        if (mOwnerShip.kIsPlayerGroup == true)
+                        if (mOwnerShip.kIsPlayer == true)
                             SoundManager.Instance.PlayEffect(2000005);
                     }
                     break;
@@ -231,7 +231,7 @@ public class Weapon : MonoBehaviour {
                     {
                         Ship ship = ObjectPoolManager.Instance.GetGameObejct(StrDef.SHIP_SKELETON).GetComponent<Ship>();
                         ship.kModel = CommonEnum.Model.Skeleton;
-                        ship.kIsPlayerGroup = mOwnerShip.kIsPlayerGroup;
+                        ship.kIsPlayer = mOwnerShip.kIsPlayer;
                         ship.transform.forward = mOwnerShip.transform.forward;
                         ship.transform.position = launcherTrans.position;
                         ship.OnPrepare();

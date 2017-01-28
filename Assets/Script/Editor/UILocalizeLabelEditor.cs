@@ -17,7 +17,7 @@ public class UILocalizeLabelEditor : Editor
 
         mKeys = new List<string>();
         mLang = new List<string>();
-        /*
+        
         var dt = CDT_LocalizingData_Manager.Instance.GetInfo(nkey);
         if (dt != null)
         {
@@ -28,7 +28,7 @@ public class UILocalizeLabelEditor : Editor
             mKeys.Add(dt.KO);
             mKeys.Add(dt.JP);
             mKeys.Add(dt.EN);
-        }*/
+        }
     }
 
     public override void OnInspectorGUI()
@@ -52,7 +52,25 @@ public class UILocalizeLabelEditor : Editor
         GUI.color = isPresent ? Color.green : Color.red;
         GUILayout.BeginVertical(GUILayout.Width(22f));
         GUILayout.Space(2f);
-        GUILayout.Label(isPresent ? "\u2714" : "\u2718", "TL SelectionButtonNew", GUILayout.Height(20f));
+        if( GUILayout.Button("적용") == true )
+        {
+            mKeys = new List<string>();
+            mLang = new List<string>();
+            UILocalizeLabel t = (UILocalizeLabel)target;
+            var dt = CDT_LocalizingData_Manager.Instance.GetInfo(t.Key);
+            if (dt != null)
+            {
+                mLang.Add("KO");
+                mLang.Add("JP");
+                mLang.Add("EN");
+
+                mKeys.Add(dt.KO);
+                mKeys.Add(dt.JP);
+                mKeys.Add(dt.EN);
+            }
+        }
+
+        //GUILayout.Label(isPresent ? "\u2714" : "\u2718", "TL SelectionButtonNew", GUILayout.Height(20f));
         GUILayout.EndVertical();
         GUI.color = Color.white;
         GUILayout.EndHorizontal();

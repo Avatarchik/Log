@@ -20,9 +20,9 @@ public class UIPausePopup : UIBase {
 
     public void OnClickReturnToLobby()
     {
-        SceneLoadManager.Instance.SetLoadScene(CommonEnum.SceneState.Lobby);
+        MessageBox.Open(3000021, StagePlayManager.Instance.ReturnToLobby, null);
     }
-
+    
     public void OnClickScreenshot()
     {
         

@@ -76,15 +76,14 @@ public class UIUnitDetailInfo : UIBase {
 
         Vector3 pos = mUnitBoard.transform.position;
 
-        int shipID = NumDef.STAGE_ID_NUMBERING + mSelectUnitIndex;
+        int shipID = CommonDef.STAGE_ID_NUMBERING + mSelectUnitIndex;
         Model model = (Model)shipID;
-        string resName = ShipSupport.TypeToString(shipID);
+        string resName = UnitSupport.TypeToString(shipID);
         
-        int refID = shipID;
-        if (ShipSupport.IsSingleSpawn(model) == true)
+        if (UnitSupport.IsSingleSpawn(model) == true)
         {
             Ship ship = ObjectPoolManager.Instance.GetGameObejct(resName).GetComponent<Ship>();
-            ship.kIsPlayerGroup = true;
+            ship.kIsPlayer = true;
             ship.transform.forward = Vector3.forward;
             ship.transform.position = pos;
             ship.transform.parent = mUnitBoard.transform;
@@ -101,13 +100,11 @@ public class UIUnitDetailInfo : UIBase {
             shipGroup.transform.position = pos;
             shipGroup.transform.parent = mUnitBoard.transform;
 
-            string refResName = ShipSupport.RefTypeToString(shipID);
-            DT_ShipData_Info infoRef = CDT_ShipData_Manager.Instance.GetInfo(shipID);
-            refID = infoRef.Reference;
-            
+            string childUnitResName = UnitSupport.ChildTypeToString(shipID);
+
             for (int n = 0; n < shipGroup.transform.childCount; n++)
-            {
-                Ship childShip = ObjectPoolManager.Instance.GetGameObejct(refResName).GetComponent<Ship>();
+            {                
+                Ship childShip = ObjectPoolManager.Instance.GetGameObejct(childUnitResName.ToString()).GetComponent<Ship>();
 
                 childShip.transform.forward = Vector3.forward;
                 childShip.transform.position = shipGroup.transform.GetChild(n).position;
@@ -120,15 +117,16 @@ public class UIUnitDetailInfo : UIBase {
                 for (int i = 0; i < childs.Length; i++)
                     childs[i].gameObject.layer = StageDef.LAYER_UNIT;
             }
+
+            ObjectPoolManager.Instance.Release(shipGroup.gameObject);
         }
 
-        DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo(shipID);
+        DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo(shipID);
         mNameLabel.text = LocalizationManager.Instance.GetLocalValue(info.Name);
-        mGradeLabel.text = LocalizationManager.Instance.GetLocalValue(1) + " : " + ShipSupport.GetGradeString((Grade)info.Grade);
+        mGradeLabel.text = LocalizationManager.Instance.GetLocalValue(1) + " : " + UnitSupport.GetGradeString((Grade)info.Grade);
         mCostLabel.text = LocalizationManager.Instance.GetLocalValue(4) + " : " + info.Cost.ToString();
         mFeatureLabel.text = LocalizationManager.Instance.GetLocalValue(info.Description);
-
-        info = CDT_ShipData_Manager.Instance.GetInfo(refID);
+        
         mArmorLabel.text = LocalizationManager.Instance.GetLocalValue(2) + " : " + info.ShieldAmount.ToString() + "/" + info.BodyAmount.ToString();
         mAttackLabel.text = LocalizationManager.Instance.GetLocalValue(3) + " : " + info.MinAttack.ToString() + " ~ " + info.MaxAttack.ToString();
         mAttackSpeedLabel.text = LocalizationManager.Instance.GetLocalValue(5) + " : " + info.AttackCoolTime.ToString();

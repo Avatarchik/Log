@@ -55,10 +55,26 @@ public class StagePlayManager : SequenceController {
                     SoundManager.Instance.BattleVoice(StageEnum.BattleSign.EnemyFind);
                     SoundManager.Instance.PlayBGM("JinglePunks");
                 }
-                break;            
+                break;
+            case Mode.Conquer:
+                {
+                    StageManager.Instance.kPlayerShipBoard.OnPrepare();
+                    StageManager.Instance.kEnemyShipBoard.OnPrepare();
+
+                    for (int i = 0; i < kPlayerShipList.Count; i++)
+                        kPlayerShipList[i].OnPrepare();
+                    for (int i = 0; i < kEnemyShipList.Count; i++)
+                        kEnemyShipList[i].OnPrepare();
+
+                    StageUIRoot.Instance.kStateBoard.Refresh();
+                    SoundManager.Instance.BattleVoice(StageEnum.BattleSign.EnemyFind);
+                    SoundManager.Instance.PlayBGM("JinglePunks");
+                }
+                break;
         }
 
         kCurStagePlayTime = 0.0f;
+        mIsNextCheck = true;
     }
 
     // Update is called once per frame
@@ -73,44 +89,81 @@ public class StagePlayManager : SequenceController {
     }
 
     //임시
-    bool mIsCheckContinu = true;
+    bool mIsNextCheck = false;
     // Update is called once per frame
     public override void OnUpdate ()
     {
         if (kEnemyShipList.Count != 0)
             kCurStagePlayTime += Time.deltaTime;
 
-        if (mIsCheckContinu == false)
+        if (mIsNextCheck == false)
             return;
 
-        if( kMode == Mode.Battle )
+        switch (kMode)
         {
-            if( kEnemyShipList.Count == 0 )
-            {
-                float clearTime = GameData.Local.GetClearTime(kCurStageNumber);
-                if (clearTime == 0 || clearTime > kCurStagePlayTime)
+            case Mode.Battle:
                 {
-                    StageUIRoot.Instance.kStateBoard.NewRecord();
-                    GameData.Local.SetClearTime(kCurStageNumber, kCurStagePlayTime);
-                }
+                    if (kEnemyShipList.Count == 0)
+                    {
+                        float clearTime = GameData.Local.GetClearTime(kCurStageNumber);
+                        if (clearTime == 0 || clearTime > kCurStagePlayTime)
+                        {
+                            StageUIRoot.Instance.kStateBoard.NewRecord();
+                            GameData.Local.SetClearTime(kCurStageNumber, kCurStagePlayTime);
+                        }
 
-                kCurStageNumber++;
-                Invoke("StageContinue", 2.0f);
-                mIsCheckContinu = false;
-            }
-            if (kPlayerShipList.Count == 0)
-            {
-                Invoke("StageContinue", 2.0f);
-                mIsCheckContinu = false;
-            }
+                        kCurStageNumber++;
+                        Invoke("StageContinue", 2.0f);
+                        mIsNextCheck = false;
+                    }
+                    if (kPlayerShipList.Count == 0)
+                    {
+                        Invoke("StageContinue", 2.0f);
+                        mIsNextCheck = false;
+                    }
+                }
+                break;
+            case Mode.Conquer:
+                {
+                    if (kEnemyShipList.Count == 0)
+                    {
+                        MessageBox.Open(3000005, ReturnToLobby);
+                        int zoneRow     = GameData.Lobby.kSelectZoneRow;
+                        int zoneColumn  = GameData.Lobby.kSelectZoneColumn;
+                        GameData.Local.SetConqueredZone(zoneRow, zoneColumn, Nation.Name.User);
+
+                        mIsNextCheck = false;
+                    }
+                    else if (kPlayerShipList.Count == 0)
+                    {
+                        MessageBox.Open(3000006, ReturnToLobby);
+                        mIsNextCheck = false;
+                    }
+                }
+                break;
         }
+    }
+
+    public void ReturnToLobby()
+    {
+        switch (kMode)
+        {
+            case Mode.Battle:
+                GameData.Lobby.kSelectMenu = LobbyEnum.MenuSelect.Main;
+                break;
+            case Mode.Conquer:
+                GameData.Lobby.kSelectMenu = LobbyEnum.MenuSelect.WorldMap;
+                break;
+        }
+
+        SceneLoadManager.Instance.SetLoadScene(CommonEnum.SceneState.Lobby);
     }
 
     void StageContinue()
     {
         kCurStagePlayTime       = 0.0f;
 
-        mIsCheckContinu = true;
+        mIsNextCheck = true;
         StageUIRoot.Instance.StageClear();
 
         kEnemyShipList.Clear();

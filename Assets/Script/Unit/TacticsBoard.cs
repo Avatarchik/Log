@@ -33,12 +33,12 @@ public class TacticsBoard : ShipBoard {
     public override void OnPrepare()
     {
         kEditShipList.Clear();
-        for (int i = 0; i < StageDef.MAX_SHIP_GROUP_COUNT; i++)
+        for (int i = 0; i < CommonDef.MAX_SHIP_GROUP_COUNT; i++)
             kEditShipList.Add(0);
 
         gameObject.SetActive(true);
 
-        for (int i = 0; i < StageDef.MAX_SHIP_GROUP_COUNT; i++)
+        for (int i = 0; i < CommonDef.MAX_SHIP_GROUP_COUNT; i++)
         {
             int shipID = GameData.Local.GetSlotData(i);
             if (shipID == 0)
@@ -75,33 +75,33 @@ public class TacticsBoard : ShipBoard {
     {
         Model model = (Model)_shipID;
 
-        string resName = ShipSupport.TypeToString(_shipID);
+        string resName = UnitSupport.TypeToString(_shipID);
         Transform slot = transform.Find("Slot" + _slotIndex.ToString());
         slot.Find("Mark").gameObject.SetActive(false);
 
-        if (ShipSupport.IsSingleSpawn(model) == true)
+        if (UnitSupport.IsSingleSpawn(model) == true)
         {
             Ship ship = ObjectPoolManager.Instance.GetGameObejct(resName).GetComponent<Ship>();
             ship.kModel = model;
             
             ship.transform.parent = slot;
-            ship.kIsPlayerGroup = kIsPlayerGroup;
+            ship.kIsPlayer = kIsPlayerGroup;
             ship.transform.forward = slot.forward;
             ship.transform.position = slot.position;
         }
         else
-        {
+        {            
             GameObject shipGroup = ObjectPoolManager.Instance.GetGameObejct(resName);            
             shipGroup.transform.forward = slot.forward;
             shipGroup.transform.position = slot.position;
 
-            string refResName = ShipSupport.RefTypeToString(_shipID);
+            string childUnitResName = UnitSupport.ChildTypeToString(_shipID);
 
             for (int i = 0; i < shipGroup.transform.childCount; i++)
             {
-                Ship childShip = ObjectPoolManager.Instance.GetGameObejct(refResName).GetComponent<Ship>();
+                Ship childShip = ObjectPoolManager.Instance.GetGameObejct(childUnitResName).GetComponent<Ship>();
                 childShip.transform.parent = slot;
-                childShip.kIsPlayerGroup = kIsPlayerGroup;
+                childShip.kIsPlayer = kIsPlayerGroup;
                 childShip.transform.forward = transform.forward;
                 childShip.transform.position = shipGroup.transform.GetChild(i).position;
                 shipGroup.transform.GetChild(i).gameObject.SetActive(false);
@@ -132,7 +132,7 @@ public class TacticsBoard : ShipBoard {
         //추가
         else
         {
-            int selectShipID = NumDef.SHIP_ID_NUMBERING + mSelectUnitIndex;
+            int selectShipID = CommonDef.UNIT_ID_NUMBERING + mSelectUnitIndex;
             if( kEditShipList[selectSlotIndex] != 0 )
                 RemoveShip(selectSlotIndex);
                         

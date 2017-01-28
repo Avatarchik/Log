@@ -188,7 +188,7 @@ public class SoundManager : SequenceController {
         mEffectSource.PlayOneShot(clip);        
     }
     
-    void Update()
+    public override void OnUpdate()
     {
         EffectOverlapTimeUpdate();
     }
@@ -198,7 +198,7 @@ public class SoundManager : SequenceController {
         for (int i = 0; i < mOverlapTimeList.Count; i++)
         {
             mOverlapTimeList[i].curTime += Time.deltaTime;
-            if (mOverlapTimeList[i].curTime > EditDef.SOUND_EFFECT_MIN_OVERTIME)
+            if (mOverlapTimeList[i].curTime > StageDef.SOUND_EFFECT_MIN_OVERTIME)
             {
                 mOverlapTimeList.RemoveAt(i);
                 i--;

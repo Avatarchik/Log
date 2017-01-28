@@ -70,7 +70,7 @@ public class UIStateBoard : MonoBehaviour {
             int underNum = (int)((curTime - (float)overNum) * 100.0f);
 
             string sec = StringUtil.TwoMix(overNum.ToString(), "' ");
-            string ms = StringUtil.TwoMix(StringUtil.IntToString2(underNum), "\"");
+            string ms = StringUtil.TwoMix(StringUtil.FloatTo2FrontString(underNum), "\"");
             
             mRecordTimeLabel.text = sec + ms;
         }
@@ -99,7 +99,7 @@ public class UIStateBoard : MonoBehaviour {
         int underNum = (int)((curTime - (float)overNum) * 100.0f);
 
         string sec = StringUtil.TwoMix(overNum.ToString(), "' ");
-        string ms = StringUtil.TwoMix(StringUtil.IntToString2(underNum), "\"");
+        string ms = StringUtil.TwoMix(StringUtil.FloatTo2FrontString(underNum), "\"");
 
         mCurrentTimeLabel.text = sec + ms;
     }

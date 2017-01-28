@@ -29,6 +29,8 @@ public class Ship : MonoBehaviour
     [HideInInspector]
     public Model kModel = Model.None;
     [HideInInspector]
+    public Model kGroupModel = Model.None;
+    [HideInInspector]
     public Grade kRarity = Grade.Common;
     [HideInInspector]
     public string kClassName = "";
@@ -102,9 +104,9 @@ public class Ship : MonoBehaviour
     ////////////////////////////////////////////////////////
     //그룹 정보
     [HideInInspector]
-    public bool kIsPlayerGroup = true;
-    [HideInInspector]    
-    UIGroupInfo mGroupInfo;
+    public bool kIsPlayer = true;
+    //[HideInInspector]    
+    //UIGroupInfo mGroupInfo;
 
     protected List<Ship> mTargetShipList = null;
     protected List<Ship> mOurShipList = null;
@@ -211,7 +213,7 @@ public class Ship : MonoBehaviour
         //mGroupInfo = StageUIRoot.Instance.kGroupInfo;
         
         //아군 그룹 및 타겟 그룹 설정
-        if (kIsPlayerGroup == true)
+        if (kIsPlayer == true)
         {
             Transform[] childs = gameObject.GetComponentsInChildren<Transform>();
             for( int i = 0; i < childs.Length; i++)
@@ -256,11 +258,11 @@ public class Ship : MonoBehaviour
         kBodyCollider.enabled = false;
         kShieldCollider.enabled = true;
 
-        kIsEngage = StagePlayManager.Instance.IsEngage(kIsPlayerGroup);
+        kIsEngage = StagePlayManager.Instance.IsEngage(kIsPlayer);
 
         mDebuffList.Clear();
 
-        DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo((int)kModel);
+        DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo((int)kModel);
         kTurningForce = info.TurnForce;
         kMaxVelocity = info.MaxVelocity;
         kAttackCollider.radius = info.AttackRange;
@@ -274,7 +276,7 @@ public class Ship : MonoBehaviour
         kCurHealthPoint = kTotalHealthPoint;
         kCurShieldPoint = kTotalShieldPoint;
 
-        if( kIsPlayerGroup == true )
+        if( kIsPlayer == true )
             StagePlayManager.Instance.kPlayerTotalArmor += kTotalHealthPoint + kTotalShieldPoint;
         else
             StagePlayManager.Instance.kEnemyTotalArmor += kTotalHealthPoint + kTotalShieldPoint;
@@ -390,7 +392,7 @@ public class Ship : MonoBehaviour
     public void MoveForward()
     {
         Vector3 forwardDir = Vector3.forward;
-        if (kIsPlayerGroup == false)
+        if (kIsPlayer == false)
             forwardDir = -Vector3.forward;
         forwardDir = forwardDir * 10.0f;
 
@@ -542,7 +544,7 @@ public class Ship : MonoBehaviour
             kState = State.Aim;
         }
 
-        if ( StagePlayManager.Instance.IsEngage(kIsPlayerGroup) == false )
+        if ( StagePlayManager.Instance.IsEngage(kIsPlayer) == false )
             StagePlayManager.Instance.SeGroupEngage(this);
     }
 
@@ -637,10 +639,35 @@ public class Ship : MonoBehaviour
 
     public virtual void Die()
     {
-        if (kIsPlayerGroup == true)
-            SoundManager.Instance.BattleVoice(StageEnum.BattleSign.PlayerDestory); 
+        if (kIsPlayer == true)
+        {
+            SoundManager.Instance.BattleVoice(StageEnum.BattleSign.PlayerDestory);
+
+            float haveShipCount = 0;
+            if (kGroupModel == Model.None)
+            {
+                haveShipCount = GameData.User.GetHaveUnitCount((int)kModel) - 1.0f;
+
+                if (haveShipCount < 0.0f)
+                    haveShipCount = 0.0f;
+
+                GameData.User.SetHaveUnitCount((int)kModel, haveShipCount);
+            }
+            else
+            {
+                DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo((int)kGroupModel);
+                haveShipCount = GameData.User.GetHaveUnitCount((int)kGroupModel) - (1.0f / (float)info.UnitCount);
+
+                if (haveShipCount < 0.0f)
+                    haveShipCount = 0.0f;
+
+                GameData.User.SetHaveUnitCount((int)kGroupModel, haveShipCount);
+            }
+        }
         else
+        {
             SoundManager.Instance.BattleVoice(StageEnum.BattleSign.EnemyDestroy);
+        }
 
         mOurShipList.Remove(this);
 

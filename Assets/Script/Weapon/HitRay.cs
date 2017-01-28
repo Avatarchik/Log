@@ -163,7 +163,7 @@ public class HitRay : Projectile {
         mForwardPos = _launcher.position;
         transform.forward = _target.transform.position - _launcher.position;
 
-        if (_target.kIsPlayerGroup == true)
+        if (_target.kIsPlayer == true)
             mMaskLayer = 1 << StageDef.LAYER_PLAYER;
         else
             mMaskLayer = 1 << StageDef.LAYER_ENEMY;

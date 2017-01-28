@@ -31,7 +31,7 @@ public class UIUnitList : UIBase {
 
             UIEventListener.Get(item.gameObject).onDoubleClick += ItemDoubleClick;
             
-            DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo(NumDef.SHIP_ID_NUMBERING + i + 1);
+            DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo(CommonDef.UNIT_ID_NUMBERING + i + 1);
             
             UISprite unitSpr = item.Find("UnitSprite").GetComponent<UISprite>();
             unitSpr.spriteName = info.ResourceName;
@@ -108,7 +108,7 @@ public class UIUnitList : UIBase {
 
         string indexStr = _obj.name.Replace("Item", "");
         int index = int.Parse(indexStr);
-        DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo(NumDef.SHIP_ID_NUMBERING + index);
+        DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo(CommonDef.UNIT_ID_NUMBERING + index);
         if (info == null)
             return;
 
@@ -118,18 +118,14 @@ public class UIUnitList : UIBase {
         mArmorLabel.text = info.ShieldAmount.ToString() + "/" + info.BodyAmount.ToString();
         mAttackLabel.text = info.MinAttack.ToString() + "-" + info.MaxAttack.ToString();
 
-        int shipID = NumDef.STAGE_ID_NUMBERING + index;
+        int shipID = CommonDef.STAGE_ID_NUMBERING + index;
         Model model = (Model)shipID;
-        int refID = shipID;
-        if (ShipSupport.IsSingleSpawn(model) == false)
-            refID = CDT_ShipData_Manager.Instance.GetInfo(shipID).Reference;
 
         mNameLabel.text = LocalizationManager.Instance.GetLocalValue(info.Name);
-        mGradeLabel.text = LocalizationManager.Instance.GetLocalValue(1) + " : " + ShipSupport.GetGradeString((Grade)info.Grade);
+        mGradeLabel.text = LocalizationManager.Instance.GetLocalValue(1) + " : " + UnitSupport.GetGradeString((Grade)info.Grade);
         mCostLabel.text = LocalizationManager.Instance.GetLocalValue(4) + " : " + info.Cost.ToString();
-        mGradeLabel.text = LocalizationManager.Instance.GetLocalValue(1) + " : " + ShipSupport.GetGradeString((Grade)info.Grade);
-
-        info = CDT_ShipData_Manager.Instance.GetInfo(refID);
+        mGradeLabel.text = LocalizationManager.Instance.GetLocalValue(1) + " : " + UnitSupport.GetGradeString((Grade)info.Grade);
+        
         mArmorLabel.text = LocalizationManager.Instance.GetLocalValue(2) + " : " + info.ShieldAmount.ToString() + "/" + info.BodyAmount.ToString();
         mAttackLabel.text = LocalizationManager.Instance.GetLocalValue(3) + " : " + info.MinAttack.ToString() + " ~ " + info.MaxAttack.ToString();
 

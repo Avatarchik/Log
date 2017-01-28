@@ -15,13 +15,12 @@ public class UILocalizeLabel : MonoBehaviour {
     {
         if (Key == -1)
             return;
-        /*
+        
         var lable = GetComponent<UILabel>();
         if (lable)
         {
             LocalizationManager.Instance.SetLocalString(lable, Key);
         }
-        */
     }
 
     public void SetLocalizeText(string text)

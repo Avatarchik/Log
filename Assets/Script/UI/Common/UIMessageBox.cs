@@ -78,23 +78,25 @@ public class UIMessageBox : UIBase
     
     public void OnClickComfirm()
     {
-        if(mConfirmButtonEvent != null)
-            mConfirmButtonEvent();
-
         gameObject.SetActive(false);
+
+        if (mConfirmButtonEvent != null)
+            mConfirmButtonEvent();
     }
 
     public void OnClickYes()
     {
+        gameObject.SetActive(false);
+
         if (mYesButtonEvent != null)
             mYesButtonEvent();
-        gameObject.SetActive(false);
     }
 
     public void OnClickNo()
     {
+        gameObject.SetActive(false);
+
         if (mNoButtonEvent != null)
             mNoButtonEvent();
-        gameObject.SetActive(false);
     }
 }

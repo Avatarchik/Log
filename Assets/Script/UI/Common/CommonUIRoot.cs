@@ -24,9 +24,9 @@ public class CommonUIRoot : SequenceController
                 
         kTitle      = mCamera.transform.Find("CenterAnchor/Title").GetComponentInChildren<UITitle>(true);
         kLoading    = mCamera.transform.Find("CenterAnchor/Loading").GetComponentInChildren<UILoading>(true);
-        kLoading    = mCamera.transform.Find("CenterAnchor/Loading").GetComponentInChildren<UILoading>(true);
-        kMessageBox = mCamera.transform.Find("CenterAnchor/MessageBox").GetComponentInChildren<UIMessageBox>(true);
+        kLoading    = mCamera.transform.Find("CenterAnchor/Loading").GetComponentInChildren<UILoading>(true);        
         kOption     = mCamera.transform.Find("CenterAnchor/Option").GetComponentInChildren<UIOption>(true);
+        kMessageBox = mCamera.transform.Find("CenterAnchor/MessageBox").GetComponentInChildren<UIMessageBox>(true);
 
         kOption.gameObject.SetActive(false);
         kTitle.gameObject.SetActive(CommonManager.Title);
@@ -51,5 +51,10 @@ public class CommonUIRoot : SequenceController
         kTitle.gameObject.SetActive(false);
         kLoading.gameObject.SetActive(true);
         kLoading.SetPercent(0);
+    }
+
+    public void SetTouchCamera()
+    {
+        EasyTouch.instance.nGUICameras.Add(mCamera);
     }
 }

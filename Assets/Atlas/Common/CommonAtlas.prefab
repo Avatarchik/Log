@@ -16,10 +16,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013484686490}
-  - 114: {fileID: 114000013329608322}
+  - component: {fileID: 4000013484686490}
+  - component: {fileID: 114000013329608322}
   m_Layer: 0
   m_Name: CommonAtlas
   m_TagString: Untagged
@@ -36,10 +36,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000013329608322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,8 +67,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BlackRect
-    x: 401
-    y: 902
+    x: 403
+    y: 749
     width: 64
     height: 64
     borderLeft: 2
@@ -93,8 +93,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_close
-    x: 257
-    y: 898
+    x: 408
+    y: 956
     width: 71
     height: 68
     borderLeft: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: btn_mode_nor
     x: 257
-    y: 967
+    y: 838
     width: 199
     height: 57
     borderLeft: 50
@@ -119,8 +119,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_option
-    x: 329
-    y: 898
+    x: 262
+    y: 745
     width: 71
     height: 68
     borderLeft: 0
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 741
     width: 261
     height: 72
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 56
+    borderRight: 53
+    borderTop: 35
+    borderBottom: 35
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
@@ -157,6 +157,45 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 47
+  - name: Icon_Gold
+    x: 408
+    y: 909
+    width: 47
+    height: 46
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 2
+    paddingBottom: 0
+  - name: Icon_Jewel
+    x: 334
+    y: 745
+    width: 68
+    height: 68
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 6
+    paddingTop: 7
+    paddingBottom: 5
+  - name: Icon_Material
+    x: 257
+    y: 935
+    width: 150
+    height: 89
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 10
+    paddingTop: 18
+    paddingBottom: 12
   - name: RedGage
     x: 0
     y: 699
@@ -171,8 +210,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: WhiteRect
-    x: 257
-    y: 831
+    x: 0
+    y: 634
     width: 64
     height: 64
     borderLeft: 0

@@ -103,27 +103,28 @@ public class UITacticsEditMenu : UIBase
 
         int unitTotalCount = 0;
 
-        for (int i = 0; i < StageDef.MAX_SHIP_GROUP_COUNT; i++)
+        for (int i = 0; i < CommonDef.MAX_SHIP_GROUP_COUNT; i++)
         {
             if (GameData.Local.GetSlotData(i) == 0)
                 continue;
                         
             int shipID = GameData.Local.GetSlotData(i);
-            int shipLv = GameData.Local.GetShipLevel(shipID);
-            DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo(shipID);
+            int attackLev = GameData.User.attackAbility;
+            int shieldLev = GameData.User.shieldAbility;
+            int bodyLev = GameData.User.bodyAbility;
+
+            DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo(shipID);
             if (info == null)
                 continue;
 
             int unitCount = info.UnitCount;
-            if (ShipSupport.IsSingleSpawn((Model)shipID) == false)            
-                info = CDT_ShipData_Manager.Instance.GetInfo(info.Reference);
-
-            int minAttack = info.MinAttack + (int)(info.MinAttack * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
-            int maxAttack = info.MaxAttack + (int)(info.MaxAttack * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
+            
+            int minAttack = info.MinAttack + (int)(info.MinAttack * (attackLev - 1) * CommonDef.TO_PERCENT_UNIT);
+            int maxAttack = info.MaxAttack + (int)(info.MaxAttack * (attackLev - 1) * CommonDef.TO_PERCENT_UNIT);
             mTotalAttack += ((int)((minAttack + maxAttack) * 0.5f)) * unitCount;
 
-            int shieldAmount = info.ShieldAmount + (int)(info.ShieldAmount * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
-            int bodyAmount = info.BodyAmount + (int)(info.BodyAmount * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
+            int shieldAmount = info.ShieldAmount + (int)(info.ShieldAmount * (shieldLev - 1) * CommonDef.TO_PERCENT_UNIT);
+            int bodyAmount = info.BodyAmount + (int)(info.BodyAmount * (bodyLev - 1) * CommonDef.TO_PERCENT_UNIT);
             mTotalArmor += (shieldAmount + bodyAmount) * unitCount;
 
             totalSpeed += (info.TurnForce + info.MaxVelocity) * unitCount;
@@ -145,28 +146,28 @@ public class UITacticsEditMenu : UIBase
 
         int unitTotalCount = 0;
 
-        for (int i = 0; i < StageDef.MAX_SHIP_GROUP_COUNT; i++)
+        for (int i = 0; i < CommonDef.MAX_SHIP_GROUP_COUNT; i++)
         {
             if (mTacticsBoard.kEditShipList[i] == 0)
                 continue;
 
             int shipID = mTacticsBoard.kEditShipList[i];
-            int shipLv = GameData.Local.GetShipLevel(shipID);
-            
-            DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo(shipID);
+            int attackLev = GameData.User.attackAbility;
+            int shieldLev = GameData.User.shieldAbility;
+            int bodyLev = GameData.User.bodyAbility;
+
+            DT_UnitData_Info info = CDT_UnitData_Manager.Instance.GetInfo(shipID);
             if (info == null)
                 continue;
 
             int unitCount = info.UnitCount;
-            if (ShipSupport.IsSingleSpawn((Model)shipID) == false)
-                info = CDT_ShipData_Manager.Instance.GetInfo(info.Reference);
-
-            int minAttack = info.MinAttack + (int)(info.MinAttack * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
-            int maxAttack = info.MaxAttack + (int)(info.MaxAttack * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
+            
+            int minAttack = info.MinAttack + (int)(info.MinAttack * (attackLev - 1) * CommonDef.TO_PERCENT_UNIT);
+            int maxAttack = info.MaxAttack + (int)(info.MaxAttack * (attackLev - 1) * CommonDef.TO_PERCENT_UNIT);
             totalAttack += ((int)((minAttack + maxAttack) * 0.5f)) * unitCount;
 
-            int shieldAmount = info.ShieldAmount + (int)(info.ShieldAmount * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
-            int bodyAmount = info.BodyAmount + (int)(info.BodyAmount * (shipLv - 1) * NumDef.TO_PERCENT_UNIT);
+            int shieldAmount = info.ShieldAmount + (int)(info.ShieldAmount * (shieldLev - 1) * CommonDef.TO_PERCENT_UNIT);
+            int bodyAmount = info.BodyAmount + (int)(info.BodyAmount * (bodyLev - 1) * CommonDef.TO_PERCENT_UNIT);
             totalArmor += (shieldAmount + bodyAmount) * unitCount;
 
             totalSpeed += (info.TurnForce + info.MaxVelocity) * unitCount;

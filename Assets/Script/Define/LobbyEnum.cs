@@ -10,6 +10,10 @@ namespace LobbyEnum
         UnitList,
         Tactics,
         UnitDetail,
-        WorldMap
+        WorldMap,
+        ConqueredZone,
+        UnconqueredZone,
+        ConqueredList,
+        ResourceInfo
     }    
 }

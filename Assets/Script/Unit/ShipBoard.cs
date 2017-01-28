@@ -27,9 +27,9 @@ public class ShipBoard : MonoBehaviour {
         for (int i = 0; i < renderers.Length; i++)
             renderers[i].enabled = false;
 
-        int stageID = NumDef.STAGE_ID_NUMBERING + StagePlayManager.Instance.kCurStageNumber;
+        int stageID = StagePlayManager.Instance.kCurStageNumber;
 
-        for (int i = 0; i < StageDef.MAX_SHIP_GROUP_COUNT; i++)
+        for (int i = 0; i < CommonDef.MAX_SHIP_GROUP_COUNT; i++)
         {
             int shipID = 0;
 
@@ -46,13 +46,14 @@ public class ShipBoard : MonoBehaviour {
             if (model == Model.None )
                 continue;
 
-            string resName = ShipSupport.TypeToString(shipID);
+            string resName = UnitSupport.TypeToString(shipID);
             Transform slot = transform.Find("Slot" + i.ToString());
 
-            if ( ShipSupport.IsSingleSpawn(model) == true )
+            if ( UnitSupport.IsSingleSpawn(model) == true )
             {                
                 Ship ship = ObjectPoolManager.Instance.GetGameObejct(resName).GetComponent<Ship>();
-                ship.kModel = model;
+                ship.kModel         = model;
+                ship.kGroupModel    = Model.None;
                 ship.kAllocID = StagePlayManager.Instance.kPlayerShipList.Count + StagePlayManager.Instance.kEnemyShipList.Count;
 
                 if (kIsPlayerGroup == true)
@@ -60,7 +61,7 @@ public class ShipBoard : MonoBehaviour {
                 else
                     StagePlayManager.Instance.kEnemyShipList.Add(ship);
                 
-                ship.kIsPlayerGroup = kIsPlayerGroup;
+                ship.kIsPlayer = kIsPlayerGroup;
                 ship.transform.forward = slot.forward;
                 ship.transform.position = slot.position;
             }
@@ -70,15 +71,16 @@ public class ShipBoard : MonoBehaviour {
                 shipGroup.transform.forward = slot.forward;
                 shipGroup.transform.position = slot.position;
 
-                string refResName = ShipSupport.RefTypeToString(shipID);
+                Model childUnitModel = UnitSupport.GetChildUnit(shipID);
+                string childUnitResName = UnitSupport.ChildTypeToString(shipID);
 
                 for (int n = 0; n < shipGroup.transform.childCount; n++)
-                {
-                    DT_ShipData_Info info = CDT_ShipData_Manager.Instance.GetInfo(shipID);
-                    Ship childShip = ObjectPoolManager.Instance.GetGameObejct(refResName).GetComponent<Ship>();
-                    childShip.kModel = (Model)info.Reference;
+                {                    
+                    Ship childShip = ObjectPoolManager.Instance.GetGameObejct(childUnitResName).GetComponent<Ship>();
+                    childShip.kModel        = childUnitModel;
+                    childShip.kGroupModel   = (Model)shipID;
                     childShip.kAllocID = StagePlayManager.Instance.kPlayerShipList.Count + StagePlayManager.Instance.kEnemyShipList.Count;
-                    childShip.kIsPlayerGroup = kIsPlayerGroup;
+                    childShip.kIsPlayer = kIsPlayerGroup;
                     childShip.transform.forward = transform.forward;
                     childShip.transform.position = shipGroup.transform.GetChild(n).position;
 
@@ -89,6 +91,8 @@ public class ShipBoard : MonoBehaviour {
 
                     shipGroup.transform.GetChild(n).gameObject.SetActive(false);
                 }
+
+                ObjectPoolManager.Instance.Release(shipGroup.gameObject);
             }            
         }
     }

@@ -2,18 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Nation : MonoBehaviour {
-    public enum Feature
+public class Nation {
+    public enum Name
     {
         None,
-        Defensive,
-        Careful,
-        Usually,
-        Aggressive,
+        User,       //유저가 차지한 영역
+        Defensive,  //방어가 차지한 영역
+        Careful,    //조심이가 차지한 영역
+        Usually,    //보통이가 차지한 영역
+        Aggressive, //공격이가 차지한 영역
         Max
     }
     
-    public Feature kFeature = Feature.None;
+    public Name kName = Name.None;
 
     [HideInInspector]
     public float kArmmyPower;       //군사력    
@@ -21,13 +22,13 @@ public class Nation : MonoBehaviour {
     public float kGrowthPower;      //성장력
 
     [HideInInspector]
-    public List<Cell> kConquestCellList = new List<Cell>();
+    public List<Zone> kConqueredZoneList = new List<Zone>();
 
     void Awake()
     {
-        Cell cell = GetComponent<Cell>();
-        cell.kNation = this;
-        kConquestCellList.Add(cell);
+        //Zone cell = GetComponent<Zone>();
+        //cell.kNation = this;
+        //kConquestCellList.Add(cell);
     }
 
     // Use this for initialization
@@ -44,7 +45,7 @@ public class Nation : MonoBehaviour {
     
     public float CellUnitArmyPower()
     {
-        return kArmmyPower / kConquestCellList.Count;
+        return kArmmyPower / kConqueredZoneList.Count;
     }
 
     IEnumerator GrowUp(float _delayTime)
@@ -63,29 +64,29 @@ public class Nation : MonoBehaviour {
             curTime -= _delayTime;
             kArmmyPower += kGrowthPower;
 
-            float cellUnitArmy = kArmmyPower / kConquestCellList.Count;
+            float cellUnitArmy = kArmmyPower / kConqueredZoneList.Count;
             
-            switch(kFeature)
+            switch(kName)
             {
-                case Feature.Defensive:
+                case Name.Defensive:
                     {
                         if (cellUnitArmy > 1.1f)
                             AttackOtherCell();
                     }
                     break;
-                case Feature.Careful:
+                case Name.Careful:
                     {
                         if (cellUnitArmy > 0.9f)
                             AttackOtherCell();
                     }
                     break;
-                case Feature.Usually:
+                case Name.Usually:
                     {
                         if (cellUnitArmy > 0.7f)
                             AttackOtherCell();
                     }
                     break;
-                case Feature.Aggressive:
+                case Name.Aggressive:
                     {
                         if (cellUnitArmy > 0.5f)
                             AttackOtherCell();
@@ -97,13 +98,13 @@ public class Nation : MonoBehaviour {
 
     void AttackOtherCell()
     {
-        List<Cell> mAttackEnableList = new List<Cell>();
-        for(int i = 0; i < kConquestCellList.Count; i++)
+        List<Zone> mAttackEnableList = new List<Zone>();
+        for(int i = 0; i < kConqueredZoneList.Count; i++)
         {
-            Cell cell = kConquestCellList[i];
+            Zone cell = kConqueredZoneList[i];
             if (cell.kRowIndex - 1 >= 0 && cell.kColumnIndex - 1 >= 0)
             {
-                Cell desCell = CellManager.Instance.Find(cell.kRowIndex - 1, cell.kColumnIndex - 1);
+                Zone desCell = ZoneManager.Instance.Find(cell.kRowIndex - 1, cell.kColumnIndex - 1);
                 if( desCell != null )
                     if (desCell.kNation == null || desCell.kNation != this)
                         mAttackEnableList.Add(desCell);
@@ -111,39 +112,39 @@ public class Nation : MonoBehaviour {
 
             if (cell.kRowIndex - 2 >= 0)
             {
-                Cell desCell = CellManager.Instance.Find(cell.kRowIndex - 2, cell.kColumnIndex);
+                Zone desCell = ZoneManager.Instance.Find(cell.kRowIndex - 2, cell.kColumnIndex);
                 if (desCell != null)
                     if (desCell.kNation == null || desCell.kNation != this)
                         mAttackEnableList.Add(desCell);
             }
 
-            if (cell.kRowIndex - 1 >= 0 && cell.kColumnIndex + 1 < CellManager.Instance.kColumnCount)
+            if (cell.kRowIndex - 1 >= 0 && cell.kColumnIndex + 1 < ZoneManager.Instance.kColumnCount)
             {
-                Cell desCell = CellManager.Instance.Find(cell.kRowIndex - 1, cell.kColumnIndex + 1);
+                Zone desCell = ZoneManager.Instance.Find(cell.kRowIndex - 1, cell.kColumnIndex + 1);
                 if (desCell != null)
                     if (desCell.kNation == null || desCell.kNation != this)
                         mAttackEnableList.Add(desCell);
             }
 
-            if (cell.kRowIndex + 1 < CellManager.Instance.kRowCount && cell.kColumnIndex - 1 >= 0)
+            if (cell.kRowIndex + 1 < ZoneManager.Instance.kRowCount && cell.kColumnIndex - 1 >= 0)
             {
-                Cell desCell = CellManager.Instance.Find(cell.kRowIndex + 1, cell.kColumnIndex - 1);
+                Zone desCell = ZoneManager.Instance.Find(cell.kRowIndex + 1, cell.kColumnIndex - 1);
                 if (desCell != null)
                     if (desCell.kNation == null || desCell.kNation != this)
                         mAttackEnableList.Add(desCell);
             }
 
-            if (cell.kRowIndex + 2 < CellManager.Instance.kRowCount)
+            if (cell.kRowIndex + 2 < ZoneManager.Instance.kRowCount)
             {
-                Cell desCell = CellManager.Instance.Find(cell.kRowIndex + 2, cell.kColumnIndex);
+                Zone desCell = ZoneManager.Instance.Find(cell.kRowIndex + 2, cell.kColumnIndex);
                 if (desCell != null)
                     if (desCell.kNation == null || desCell.kNation != this)
                         mAttackEnableList.Add(desCell);
             }
 
-            if (cell.kRowIndex + 1 < CellManager.Instance.kRowCount && cell.kColumnIndex + 1 < CellManager.Instance.kColumnCount)
+            if (cell.kRowIndex + 1 < ZoneManager.Instance.kRowCount && cell.kColumnIndex + 1 < ZoneManager.Instance.kColumnCount)
             {
-                Cell desCell = CellManager.Instance.Find(cell.kRowIndex + 1, cell.kColumnIndex + 1);
+                Zone desCell = ZoneManager.Instance.Find(cell.kRowIndex + 1, cell.kColumnIndex + 1);
                 if (desCell != null)
                     if (desCell.kNation == null || desCell.kNation != this)
                         mAttackEnableList.Add(desCell);
@@ -154,7 +155,7 @@ public class Nation : MonoBehaviour {
             return;
 
         int attackCellIndex = Random.Range(0, mAttackEnableList.Count);
-        Cell attackCell = mAttackEnableList[attackCellIndex];
+        Zone attackCell = mAttackEnableList[attackCellIndex];
 
         //점령 성공
         if (CellUnitArmyPower() > attackCell.CellUnitArmyPower())
@@ -178,7 +179,17 @@ public class Nation : MonoBehaviour {
 
     public void Lose()
     {
-        float cellUnitArmy = kArmmyPower / kConquestCellList.Count;
+        float cellUnitArmy = kArmmyPower / kConqueredZoneList.Count;
         kArmmyPower -= cellUnitArmy;
+    }
+
+    public void AddZone(Zone _zone)
+    {
+        kConqueredZoneList.Add(_zone);
+    }
+
+    public void RemoveZone(Zone _zone)
+    {
+        kConqueredZoneList.Remove(_zone);
     }
 }

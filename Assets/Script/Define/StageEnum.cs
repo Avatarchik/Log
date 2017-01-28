@@ -13,6 +13,8 @@ namespace StageEnum
 
     public enum Mode
     {
+        None,
         Battle,
+        Conquer
     }
 }

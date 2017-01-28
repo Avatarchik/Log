@@ -66,6 +66,7 @@ public class StageManager : MonoBehaviour {
                 yield return new WaitForSeconds(0.1f);
         }
 
+        CommonUIRoot.Instance.SetTouchCamera();
         CommonUIRoot.Instance.kLoading.SetPercent(60);
         yield return null;
         
@@ -117,7 +118,7 @@ public class StageManager : MonoBehaviour {
         CommonUIRoot.Instance.kLoading.SetPercent(90);
         yield return null;
 
-        SetMode(Mode.Battle);
+        SetMode(GameData.Lobby.kSelectMode);
 
         CommonUIRoot.Instance.kLoading.SetPercent(100);
         yield return null;
@@ -130,7 +131,14 @@ public class StageManager : MonoBehaviour {
             case Mode.Battle:
                 {
                     StagePlayManager.Instance.kMode = Mode.Battle;
-                    StagePlayManager.Instance.kCurStageNumber = 10;
+                    StagePlayManager.Instance.kCurStageNumber = 1000010;
+                    StagePlayManager.Instance.GameStart();
+                }
+                break;
+            case Mode.Conquer:
+                {
+                    StagePlayManager.Instance.kMode = Mode.Conquer;
+                    StagePlayManager.Instance.kCurStageNumber = GameData.Lobby.kSelectStageDataID;
                     StagePlayManager.Instance.GameStart();
                 }
                 break;

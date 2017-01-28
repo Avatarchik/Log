@@ -32,56 +32,28 @@ public class LocalizationManager : SingletonT<LocalizationManager>
         else
             mCurrentLanguageT = LanguageT.KO;
     }
-    /*
-    public void SetLocalString(UILabel _label, int _ikey, DataType _type = DataType.General)
+    
+    public void SetLocalString(UILabel _label, int _ikey)
     {
-        switch(_type)
+        if (CDT_LocalizingData_Manager.Instance.GetInfo(_ikey) != null)
         {
-            case DataType.General:
-                {
-                    if (CDT_LocalizingData_Manager.Instance.GetInfo(_ikey) != null)
-                    {
-                        if (mCurrentLanguageT == LanguageT.KO)
-                        {
-                            _label.text = CDT_LocalizingData_Manager.Instance.GetInfo(_ikey).KO;
-                        }
+            if (mCurrentLanguageT == LanguageT.KO)
+            {
+                _label.text = CDT_LocalizingData_Manager.Instance.GetInfo(_ikey).KO;
+            }
 
-                        if (mCurrentLanguageT == LanguageT.JP)
-                        {
-                            _label.text = CDT_LocalizingData_Manager.Instance.GetInfo(_ikey).JP;
-                        }
+            if (mCurrentLanguageT == LanguageT.JP)
+            {
+                _label.text = CDT_LocalizingData_Manager.Instance.GetInfo(_ikey).JP;
+            }
 
-                        if (mCurrentLanguageT == LanguageT.EN)
-                        {
-                            _label.text = CDT_LocalizingData_Manager.Instance.GetInfo(_ikey).EN;
-                        }
-                    }
-                }
-                break;
-            case DataType.Tutorial:
-                {
-                    if (CDT_TutorialDialog_Manager.Instance.GetInfo(_ikey) != null)
-                    {
-                        if (mCurrentLanguageT == LanguageT.KO)
-                        {
-                            _label.text = CDT_TutorialDialog_Manager.Instance.GetInfo(_ikey).KO;
-                        }
-
-                        if (mCurrentLanguageT == LanguageT.JP)
-                        {
-                            _label.text = CDT_TutorialDialog_Manager.Instance.GetInfo(_ikey).JP;
-                        }
-
-                        if (mCurrentLanguageT == LanguageT.EN)
-                        {
-                            _label.text = CDT_TutorialDialog_Manager.Instance.GetInfo(_ikey).EN;
-                        }
-                    }
-                }
-                break;
+            if (mCurrentLanguageT == LanguageT.EN)
+            {
+                _label.text = CDT_LocalizingData_Manager.Instance.GetInfo(_ikey).EN;
+            }
         }
     }
-    */
+
     public string GetLocalValue(int _ikey)
     {
         string strValue = "";

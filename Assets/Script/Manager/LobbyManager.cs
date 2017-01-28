@@ -29,6 +29,8 @@ public class LobbyManager : SingletonG<LobbyManager>{
     [HideInInspector]
     public TacticsCamera kTacticsCamera = null;
     [HideInInspector]
+    public WorldCamera kWorldCamera = null;
+    [HideInInspector]
     public GameObject kLobbySpaceFog = null;
 
     [HideInInspector]
@@ -44,7 +46,9 @@ public class LobbyManager : SingletonG<LobbyManager>{
         SequenceController controller = null;
         controller = LobbyUIRoot.Instance.GetComponent<SequenceController>();
         mSequenceControllerList.Add(controller);
-        controller = WorldMapUIRoot.Instance.GetComponent<SequenceController>();
+        controller = WorldUIRoot.Instance.GetComponent<SequenceController>();
+        mSequenceControllerList.Add(controller);
+        controller = ZoneManager.Instance.GetComponent<SequenceController>();
         mSequenceControllerList.Add(controller);
 
         StartCoroutine(SequenceControl());
@@ -77,7 +81,9 @@ public class LobbyManager : SingletonG<LobbyManager>{
                 yield return null;
         }
 
+        CommonUIRoot.Instance.SetTouchCamera();
         CommonUIRoot.Instance.kLoading.SetPercent(60);
+
         yield return null;
 
         while (kTacticsBoard == null)
@@ -116,6 +122,15 @@ public class LobbyManager : SingletonG<LobbyManager>{
                 yield return null;
         }
 
+        while (kWorldCamera == null)
+        {
+            GameObject getGameObject = WorldUIRoot.Instance.transform.Find("Camera").gameObject;
+            if (null != getGameObject)
+                kWorldCamera = getGameObject.transform.GetComponent<WorldCamera>();
+            else
+                yield return null;
+        }
+        
         while (kTacticsCamera == null)
         {
             GameObject getGameObject = GameObject.Find("TacticsCamera");
@@ -152,7 +167,7 @@ public class LobbyManager : SingletonG<LobbyManager>{
             controller.Prepare();
         }
 
-        SetMenu(MenuSelect.Main);
+        SetMenu(GameData.Lobby.kSelectMenu);
         yield return null;
 
         CommonUIRoot.Instance.kLoading.SetPercent(100);
@@ -165,14 +180,14 @@ public class LobbyManager : SingletonG<LobbyManager>{
             return;
 
         LobbyUIRoot.Instance.SetMenu(_selectMenu);
-
+        
         WorldMenu selectWorld = GetWorld(_selectMenu);
         WorldMenu curWorld = GetWorld(kCurrentMenu);
         bool kIsChangeWorld = false;
         if (selectWorld != curWorld)
             kIsChangeWorld = true;
 
-        if (kIsChangeWorld == true)
+        if (kIsChangeWorld == true || selectWorld == WorldMenu.Empty)
         {
             kTacticsBoard.gameObject.SetActive(false);
             kTacticsCamera.gameObject.SetActive(false);            
@@ -186,7 +201,8 @@ public class LobbyManager : SingletonG<LobbyManager>{
                 LobbyUIRoot.Instance.kUnitList.SelectClear();
         }
 
-        WorldMapUIRoot.Instance.gameObject.SetActive(false);
+        kWorldCamera.gameObject.SetActive(false);
+        kUnitCamera.gameObject.SetActive(false);
 
         switch (_selectMenu)
         {
@@ -230,7 +246,7 @@ public class LobbyManager : SingletonG<LobbyManager>{
                 {
                     kLobbyCamera.kIsCinemaView = false;
                     kLobbyCamera.gameObject.SetActive(true);
-                    WorldMapUIRoot.Instance.gameObject.SetActive(true);
+                    kWorldCamera.gameObject.SetActive(true);
                     SoundManager.Instance.BGMVolume(0.3f);
                 }
                 break;
